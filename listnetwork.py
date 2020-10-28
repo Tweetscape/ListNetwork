@@ -15,8 +15,7 @@ api = tweepy.API(auth)
 
 #Store members of crytogurus list as a ResultSet Object
 
-cryptogurus = api.list_members(screen_name='@shingaithornton', slug = 'cryptogurus', owner_screen_name='@shingaithornton', include_rts = 'false', count = 5000)
-
+cryptogurus = api.list_members(screen_name='@shingaithornton', slug = 'cryptogurus', owner_screen_name='@shingaithornton', count = 100)
 
 
 #Store each user in list, print names
@@ -27,7 +26,9 @@ for i in range(len(cryptogurus)):
     print (cryptogurus[i].name)
 
 
-#Loop through list to determine which users are following each other
+#Loop through list to determine which users are following each other (API limit issues? Need to start with small list, or persist data to avoid limits?)
+
+checkfriends = api.show_friendship(source_screen_name ='user_1',target_screen_name='user_2')
 
 
 #Create network with each user as a node
